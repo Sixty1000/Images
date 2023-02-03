@@ -81,5 +81,24 @@ public class ImageProcessing{
 		
 		return sketch;
 	}
-	
+	/*
+	public static APImage Shrink(APImage img, int fact){
+		int width = img.getWidth()/fact;
+		int height = img.getHeight()/fact;
+		APImage sketch = new APImage(width, height);
+		
+		
+		for(int i = 0; i < img.getHeight(); i++) {
+			
+			
+		}
+			for(int j = 0; j < img.getWidth(); j+=2) {
+			
+			
+			int red =img.getPixel(i, j).getRed();
+			
+		}
+			
+		return sketch;
+	}*/
 }
