@@ -1,1 +1,6 @@
 //Color Filtering && Posterizing
+public static void Posterizing(APImage i){
+}
+
+public static void ColerFiltering(APImage i){
+}
