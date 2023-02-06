@@ -1,4 +1,25 @@
-public static void Sharpen(APImage i){
-}
+public static void Sharpen(APImage i, double thresh){
 
-...
+	int width = i.getWidth();
+	int height = i.getHeight();
+	APImage sketch = new APImage(width, height);
+	
+	for(int y = 0; y < height-1; y++) {
+		for(int x = 1; x < width; x++) {
+			Pixel currPix = i.getPixel(x,y);
+			Pixel leftPix = i.getPixel(x-1, y);
+			Pixel botPix = i.getPixel(x, y+1);
+			
+			int currAvg = (currPix.getRed() + currPix.getBlue() + currPix.getGreen())/3;
+			int leftAvg = (leftPix.getRed() + leftPix.getBlue() + leftPix.getGreen())/3;
+			int botAvg = (botPix.getRed() + botPix.getBlue() + botPix.getGreen())/3;
+			
+			if(Math.abs(currAvg - leftAvg) <= thresh || Math.abs(currAvg - botAvg) <= thresh) {
+				Pixel p = sketch.getPixel(x, y);
+				p.setRed(p.getRed() * thresh);
+				p.setBlue(p.getBlue() * thresh);
+				p.setGreen(p.getGreen() * thresh);
+				}	
+			}
+		}
+	}
