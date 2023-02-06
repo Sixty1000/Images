@@ -1,6 +1,30 @@
 //Color Filtering && Posterizing
-public static void Posterizing(APImage i){
-}
+public static void Posterizing(APImage i) {
+		int colOneRed = (int)(Math.random() * 257);
+		int colOneGreen = (int)(Math.random() * 257);
+		int colOneBlue = (int)(Math.random() * 257);
+		int colTwoRed = (int)(Math.random() * 257);
+		int colTwoGreen = (int)(Math.random() * 257);
+		int colTwoBlue = (int)(Math.random() * 257);
+		
+		for(Pixel p : i) {
+			int r = p.getRed();
+			int g = p.getGreen();
+			int b = p.getBlue();
+			
+			int avgVal = (r+g+b)/3;
+			
+			if(avgVal < 128) {
+				p.setRed(colOneRed);
+				p.setGreen(colOneGreen);
+				p.setBlue(colOneBlue);
+			}else {
+				p.setRed(colTwoRed);
+				p.setGreen(colTwoGreen);
+				p.setBlue(colTwoBlue);
+			}
+		}
+	}
 
 public static void ColerFiltering(APImage i){
 }
