@@ -26,5 +26,38 @@ public static void Posterizing(APImage i) {
 	}
 }
 
-public static void ColerFiltering(APImage i){
+public static void ColorFiltering(APImage i, int r, int g, int b) {
+	for(Pixel p : i) {
+
+		if((p.getRed() + r) > 0 && (p.getRed() + r) < 256) {
+			p.setRed(p.getRed() + r);
+		} else {
+			if((p.getRed() + r) < 0) {
+				p.setRed(0);
+			} else {
+				p.setRed(255);
+			}
+		}
+
+		if((p.getGreen() + g) > 0 && (p.getGreen() + g) < 256) {
+			p.setGreen(p.getGreen() + g);
+		} else {
+			if((p.getGreen() + g) < 0) {
+				p.setGreen(0);
+			} else {
+				p.setGreen(255);
+			}
+		}
+
+		if((p.getBlue() + b) > 0 && (p.getBlue() + b) < 256) {
+			p.setBlue(p.getBlue() + b);
+		} else {
+			if((p.getBlue() + b) < 0) {
+				p.setBlue(0);
+			} else {
+				p.setBlue(255);
+			}
+		}
+	}
+
 }
