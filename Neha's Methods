@@ -14,10 +14,16 @@ public class ImageProcessing{
 		APImage rotatedRight = rotate90Right(image4);
 		APImage rotated = rotate180(image2);
 		
+		oldFashioned(image);
+		image.draw();
 		edgeImage.draw();
 		rotatedLeft.draw();
 		rotatedRight.draw();
 		rotated.draw();
+		
+		photoNegative(image4);
+		image4.draw();
+		
 		
 	}
 	
@@ -133,91 +139,48 @@ public class ImageProcessing{
 		return sketch;
 	}
 	
-	/*
-	public static APImage Shrink(APImage img, int fact){
-		int width = img.getWidth()/fact;
-		int height = img.getHeight()/fact;
-		APImage sketch = new APImage(width, height);
+	public static void oldFashioned(APImage img) {
+		GrayScale(img);
 		
-		
-		for(int i = 0; i < img.getHeight(); i++) {
-			
-			
-		}
-			for(int j = 0; j < img.getWidth(); j+=2) {
-			
-			
-			int red =img.getPixel(i, j).getRed();
-			
-		}
-			
-		return sketch;
-	}*/
-}
-
-
-
-
-
-/*import images.APImage;
-import images.Pixel;
-
-public class ImageProcessing{
-	public static void main(String[] args){
-		APImage butterfly = new APImage("butterfly1.jpg");
-		APImage koala = new APImage("koala.jpg");
-		//APImage arch = new APImage("arch.jpg");
-		//APImage motor = new APImage("redMotercycle.jpg");
-		//APImage bird = new APImage("seagull.jpg");
-		//APImage cat = new APImage("smokey.jpg");
-		//APImage uglyDuck = new APImage("swan.jpg");
-		GrayScale(butterfly);
-		butterfly.draw();
-		BlackWhite(koala);
-		koala.draw();
-		
-		
-	}
-	
-	public static void GrayScale(APImage i) {
-		for(Pixel p: i) {
-			int r = p.getRed();
-			int g = p.getGreen();
-			int b = p.getBlue();
-			
-			int avgVal = (r+g+b)/3;
-			
-			r = avgVal;
-			g = avgVal;
-			b = avgVal;
-			
-			p.setRed(r);
-			p.setBlue(b);
-			p.setGreen(g);
-		}
-	}
-	
-	public static void BlackWhite(APImage i) {
-		for(Pixel p : i) {
-			
-			int r = p.getRed();
-			int g = p.getGreen();
-			int b = p.getBlue();
-			
-			int avgVal = (r+g+b)/3;
-			
-			if(avgVal < 128) {
-				p.setRed(0);
-				p.setGreen(0);
-				p.setBlue(0);
-			}else {
-				p.setRed(255);
-				p.setGreen(255);
-				p.setBlue(255);
+		for(int i = 0; i<img.getHeight(); i++) {
+			for(int j = 0; j<img.getWidth(); j++) {
+				Pixel temp = img.getPixel(j,i);
+				int red = temp.getRed();
+				int blue = temp.getBlue();
+				if(red < 63) {
+					img.getPixel(j, i).setRed((int)(red * 1.1));
+					img.getPixel(j, i).setBlue((int)(blue * 0.9));
+				}
+				else if(red < 192) {
+					img.getPixel(j, i).setRed((int)(red * 1.15));
+					img.getPixel(j, i).setBlue((int)(blue * 0.85));
+				}
+				else {
+					img.getPixel(j, i).setRed(Math.min((int)(red * 1.08), 255));
+					img.getPixel(j, i).setBlue((int)(blue * 0.93));
+				}
 			}
 		}
+		
 	}
 	
+	public static void photoNegative(APImage img) {
+		GrayScale(img);
+		
+//		int width = img.getWidth();
+//		int height = img.getHeight();
+//		APImage sketch = new APImage(width, height);
+		
+		for(int i = 0; i<img.getHeight(); i++) {
+			for(int j = 0; j<img.getWidth(); j++) {
+				Pixel temp = img.getPixel(j,i);
+				temp.setRed(255 - img.getPixel(j,i).getRed());
+				temp.setBlue(255 - img.getPixel(j,i).getBlue());
+				temp.setGreen(255 - img.getPixel(j,i).getGreen());
+				img.setPixel(j, i, temp);
+			}
+		}
+		//return sketch;
+	}
 	
 }
-*/
