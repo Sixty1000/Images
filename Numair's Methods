@@ -37,3 +37,16 @@ public static void darken(APImage i, int factor){
 	            
 	            }
 	         }
+		 public static void luminance(APImage i) {
+		for(Pixel p: i) {
+			int r = (int)(p.getRed() * .299);
+			int g = (int)(p.getGreen() * .587);
+			int b = (int)(p.getBlue() * .114);
+			
+			int avg = (r + g + b)/3;
+			
+			p.setRed(avg);
+			p.setBlue(avg);
+			p.setGreen(avg);
+		}
+	}
