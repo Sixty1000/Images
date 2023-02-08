@@ -1,21 +1,39 @@
 // darken/brighten, blur, greyscale
 public static void darken(APImage i, int factor){
-      for(Pixel p : i){
-            int r = p.getRed() - factor;
-            int g = p.getGreen() - factor;
-            int b = p.getBlue() - factor;
-            
-            if(r < 0)
-              r = 0;
-            if(g < 0)
-              g = 0;
-            if(b < 0)
-              b = 0;
-              
-            p.setRed(r);
-            p.setGreen(g);
-            p.setBlue(b);
-            
-            }
-         } 
-     }
+	      for(Pixel p : i){
+	            int r = p.getRed() - factor;
+	            int g = p.getGreen() - factor;
+	            int b = p.getBlue() - factor;
+	            
+	            if(r < 0)
+	              r = 0;
+	            if(g < 0)
+	              g = 0;
+	            if(b < 0)
+	              b = 0;
+	              
+	            p.setRed(r);
+	            p.setGreen(g);
+	            p.setBlue(b);
+	            
+	            }
+	         } 
+	public static void brighten(APImage i, int factor){
+	      for(Pixel p : i){
+	            int r = p.getRed() + factor;
+	            int g = p.getGreen() + factor;
+	            int b = p.getBlue() + factor;
+	            
+	            if(r > 255)
+	              r = 255;
+	            if(g > 255)
+	              g = 255;
+	            if(b > 255)
+	              b = 255;
+	              
+	            p.setRed(r);
+	            p.setGreen(g);
+	            p.setBlue(b);
+	            
+	            }
+	         }
