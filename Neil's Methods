@@ -1,4 +1,8 @@
 //Color Filtering && Posterizing
+/**
+ * Converts image into posterized version
+ * @param i - original image
+ */
 public static void Posterizing(APImage i) {
 	int colOneRed = (int)(Math.random() * 256);
 	int colOneGreen = (int)(Math.random() * 256);
@@ -26,6 +30,13 @@ public static void Posterizing(APImage i) {
 	}
 }
 
+/**
+ * Puts more color or removes a color from an image
+ * @param i - original image
+ * @param r - amount of red to remove/add
+ * @param g - amount of green to remove/add
+ * @param b - amount of blue to remove/add
+ */
 public static void ColorFiltering(APImage i, int r, int g, int b) {
 	for(Pixel p : i) {
 
