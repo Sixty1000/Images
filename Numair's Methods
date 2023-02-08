@@ -50,3 +50,24 @@ public static void darken(APImage i, int factor){
 			p.setGreen(avg);
 		}
 	}
+	public static void blur(APImage i) {
+		for(int y = 1; y < i.getHeight()-1; y++) {
+			for(int x = 1; x < i.getWidth()-1; x+=2) {
+				Pixel right = i.getPixel(x+1, y);
+				Pixel top = i.getPixel(x, y-1);
+				Pixel bottom = i.getPixel(x, y + 1);
+				Pixel left = i.getPixel(x - 1, y);
+				
+				int rAvg = (right.getRed() + top.getRed() + bottom.getRed() + left.getRed()) / 4;
+				int gAvg = (right.getGreen() + top.getGreen() + bottom.getGreen() + left.getGreen()) / 4;
+				int bAvg = (right.getBlue() + top.getBlue() + bottom.getBlue() + left.getBlue()) / 4;
+				Pixel avg = new Pixel(rAvg, gAvg, bAvg);
+				
+				right = avg;
+				top = avg;
+				bottom = avg;
+				left = avg;
+				
+			}
+		}
+	}
