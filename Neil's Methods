@@ -1,4 +1,4 @@
-//Color Filtering && Posterizing
+//Color Filtering && Posterizing --DONE
 /**
  * Converts image into posterized version
  * @param i - original image
