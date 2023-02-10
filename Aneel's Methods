@@ -1,25 +1,97 @@
-public static void Sharpen(APImage i, double thresh){
-
-	int width = i.getWidth();
-	int height = i.getHeight();
-	APImage sketch = new APImage(width, height);
-	
-	for(int y = 0; y < height-1; y++) {
-		for(int x = 1; x < width; x++) {
-			Pixel currPix = i.getPixel(x,y);
-			Pixel leftPix = i.getPixel(x-1, y);
-			Pixel botPix = i.getPixel(x, y+1);
-			
-			int currAvg = (currPix.getRed() + currPix.getBlue() + currPix.getGreen())/3;
-			int leftAvg = (leftPix.getRed() + leftPix.getBlue() + leftPix.getGreen())/3;
-			int botAvg = (botPix.getRed() + botPix.getBlue() + botPix.getGreen())/3;
-			
-			if(Math.abs(currAvg - leftAvg) <= thresh || Math.abs(currAvg - botAvg) <= thresh) {
-				Pixel p = sketch.getPixel(x, y);
-				p.setRed(p.getRed() * thresh);
-				p.setBlue(p.getBlue() * thresh);
-				p.setGreen(p.getGreen() * thresh);
-				}	
+public static APImage Enlarge(APImage img, int fact){
+		int width = img.getWidth()*fact;
+		int height = img.getHeight()*fact;
+		APImage sketch = new APImage(width, height);
+		
+		int countI = 0;
+		int countJ = 0;
+		for(int y = 0; y < img.getHeight(); y++) {
+			for(int x = 0; x < img.getWidth(); x++) {
+				Pixel old = img.getPixel(x, y);
+			   for(int i = countI * fact; i < fact + (countI * fact); i++) {
+				   for(int j = countJ * fact; j < fact + (countJ * fact); j++) {
+					   Pixel p = sketch.getPixel(j, i);
+						p.setRed(old.getRed());
+						p.setBlue(old.getBlue());
+						p.setGreen(old.getGreen()); 
+				   }
+			   }
+			   countJ++;
 			}
+			countJ = 0;
+			countI++;
 		}
+			
+		return sketch;
+	}
+	
+	
+	public static APImage Shrink(APImage img, int fact){
+		int width = img.getWidth()/fact;
+		int height = img.getHeight()/fact;
+		APImage sketch = new APImage(width, height);
+		
+		
+		for(int y = 0; y < img.getHeight() - fact; y+=fact) {
+			for(int x = 0; x < img.getWidth() - fact; x+=fact){
+				
+				Pixel d = img.getPixel(x, y);
+				
+					Pixel p = sketch.getPixel(x/fact,y/fact);
+					p.setRed(d.getRed());
+					p.setBlue(d.getBlue());
+					p.setGreen(d.getGreen());
+				
+			}
+			
+		}
+			
+		return sketch;
+	}
+	
+		public static APImage Sharpen(APImage i, int thresh, int deg){
+
+			int width = i.getWidth();
+			int height = i.getHeight();
+			APImage sketch = i;
+			
+			for(int y = 0; y < height-1; y++) {
+				for(int x = 1; x < width; x++) {
+					Pixel p = sketch.getPixel(x, y);
+					Pixel currPix = i.getPixel(x,y);
+					Pixel leftPix = i.getPixel(x-1, y);
+					Pixel botPix = i.getPixel(x, y+1);
+					
+					int currAvg = (currPix.getRed() + currPix.getBlue() + currPix.getGreen())/3;
+					int leftAvg = (leftPix.getRed() + leftPix.getBlue() + leftPix.getGreen())/3;
+					int botAvg = (botPix.getRed() + botPix.getBlue() + botPix.getGreen())/3;
+					
+					if(Math.abs(currAvg - leftAvg) <= thresh || Math.abs(currAvg - botAvg) <= thresh) {
+						
+						p.setRed(p.getRed() - deg);
+						p.setBlue(p.getBlue() - deg);
+						p.setGreen(p.getGreen() - deg);
+						
+						if(p.getRed() < 0) {
+							p.setRed(0);
+						}
+						if(p.getGreen() < 0) {
+							p.setGreen(0);
+						}
+						if(p.getBlue() < 0) {
+							p.setBlue(0);
+						}
+											
+						}
+					 else {
+						p.setRed(p.getRed());
+						p.setBlue(p.getBlue());
+						p.setGreen(p.getGreen());
+					}
+					}
+				}
+			return sketch;
+			}
+			
+
 	}
