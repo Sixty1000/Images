@@ -1,5 +1,11 @@
 // darken/brighten, blur, greyscale -- DONE
-public static void darken(APImage i, int factor){
+	/**
+	 * takes image and creates another image darkened it by a certain factor
+	 * @param img APImage that will be darkened
+	 * @param int factor - the amount each pixel will be darkened by
+	 * @return APImage darkened by factor
+	 */
+	public static void darken(APImage i, int factor){
 	      for(Pixel p : i){
 	            int r = p.getRed() - factor;
 	            int g = p.getGreen() - factor;
@@ -18,6 +24,13 @@ public static void darken(APImage i, int factor){
 	            
 	            }
 	         } 
+		 
+	/**
+	 * takes image and creates another image brightened by a certain factor
+	 * @param img APImage that will be brightened
+	 * @param int factor - the amount each pixel will be brightened by
+	 * @return APImage brightened by factor
+	 */	 
 	public static void brighten(APImage i, int factor){
 	      for(Pixel p : i){
 	            int r = p.getRed() + factor;
@@ -35,21 +48,31 @@ public static void darken(APImage i, int factor){
 	            p.setGreen(g);
 	            p.setBlue(b);
 	            
-	            }
-	         }
-		 public static void luminance(APImage i) {
-		for(Pixel p: i) {
-			int r = (int)(p.getRed() * .299);
-			int g = (int)(p.getGreen() * .587);
-			int b = (int)(p.getBlue() * .114);
+	      }
+	  }
+	/**
+	* takes image creates a luinanced greyscale version of it
+	* @param img APImage that will be luminance greyscaled
+	* @return APImage luminance image
+	*/
+	public static void luminance(APImage i) {
+	for(Pixel p: i) {
+		int r = (int)(p.getRed() * .299);
+		int g = (int)(p.getGreen() * .587);
+		int b = (int)(p.getBlue() * .114);
 			
-			int avg = (r + g + b)/3;
+		int avg = (r + g + b)/3;
 			
-			p.setRed(avg);
-			p.setBlue(avg);
-			p.setGreen(avg);
+		p.setRed(avg);
+		p.setBlue(avg);
+		p.setGreen(avg);
 		}
 	}
+	/**
+	* takes image creates a blured version of it
+	* @param img APImage that will be blurred
+	* @return APImage blurred image
+	*/
 	public static void blur(APImage i) {
 		for(int y = 1; y < i.getHeight()-1; y++) {
 			for(int x = 1; x < i.getWidth()-1; x+=2) {
