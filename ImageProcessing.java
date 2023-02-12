@@ -97,7 +97,6 @@ public class ImageProcessing{
 	
 	//Neha Ashwin
 	/**
-	 * 
 	 * @param img APImage that will be rotated left 90º
 	 * @return rotated APImage (does not change the original image
 	 */
@@ -181,9 +180,9 @@ public class ImageProcessing{
 	/**
 	 * Puts more color or removes a color from an image
 	 * @param i - original image
-	 * @param r - amount of red to remove/add
-	 * @param g - amount of green to remove/add
-	 * @param b - amount of blue to remove/add
+	 * @param r - the amount of red to remove/add
+	 * @param g - the amount of green to remove/add
+	 * @param b - the amount of blue to remove/add
 	 */
 	public static void ColorFiltering(APImage i, int r, int g, int b) {
 		for(Pixel p : i) {
@@ -222,6 +221,12 @@ public class ImageProcessing{
 	}
 	
 	// darken/brighten, blur, greyscale -- Numair Chowdhury
+	/**
+	 * takes image and creates another image darkened it by a certain factor
+	 * @param img - APImage that will be darkened
+	 * @param factor - the amount each pixel will be darkened by
+	 * @return - APImage darkened by factor
+	 */
 	public static void darken(APImage i, int factor){
 		  for(Pixel p : i){
 		        int r = p.getRed() - factor;
@@ -242,6 +247,12 @@ public class ImageProcessing{
 	        }
 	} 
 	//Numair Chowdhury
+	/**
+	* takes image and creates another image brightened by a certain factor
+	* @param img - APImage that will be brightened
+	* @param factor - the amount each pixel will be brightened by
+	* @return - APImage brightened by factor
+	*/
 	public static void brighten(APImage i, int factor){
 	      for(Pixel p : i){
 	            int r = p.getRed() + factor;
@@ -262,6 +273,11 @@ public class ImageProcessing{
             }
 	}
 	//Numair Chowdhury
+	/**
+	* takes image creates a luinanced greyscale version of it
+	* @param - img APImage that will be luminance greyscaled
+	* @return - APImage luminance image
+	*/
 	public static void luminance(APImage i) {
 		for(Pixel p: i) {
 			int r = (int)(p.getRed() * .299);
@@ -276,6 +292,11 @@ public class ImageProcessing{
 		}
 	}
 	//Numair Chowdhury
+	/**
+	* takes image creates a blured version of it
+	* @param - img APImage that will be blurred
+	* @return - APImage blurred image
+	*/
 	public static void blur(APImage i) {
 		for(int y = 1; y < i.getHeight()-1; y++) {
 			for(int x = 1; x < i.getWidth()-1; x+=2) {
@@ -309,6 +330,12 @@ public class ImageProcessing{
 	}
 	
 	//Aneel
+	/**
+	* takes image creates a enlarged version of it
+	* @param - img APImage that will be enlarged
+	* @param - int fact the factor the image will be enlarged by
+	* @return - APImage enlarged image
+	*/
 	public static APImage Enlarge(APImage img, int fact){
 		int width = img.getWidth()*fact;
 		int height = img.getHeight()*fact;
@@ -337,6 +364,12 @@ public class ImageProcessing{
 	}
 		
 	//Aneel
+	/**
+	* takes image creates a shrunk version of it
+	* @param - img APImage that will be shrunk
+	* @param - int fact the factor the image will be shrunk by
+	* @return - APImage shrunken image
+	*/
 	public static APImage Shrink(APImage img, int fact){
 		int width = img.getWidth()/fact;
 		int height = img.getHeight()/fact;
@@ -362,6 +395,13 @@ public class ImageProcessing{
 	
 	
 	//Aneel
+	/**
+	* takes image creates a sharpened version of it
+	* @param img APImage - that will be sharpened
+	* @param int thresh - the number that each color has to pass to become sharpened (darker)
+	* @param int deg - the number that each color will be darkened if they pass the threshold
+	* @return - APImage enlarged image
+	*/
 	public static APImage Sharpen(APImage i, int thresh, int deg){
 
 		int width = i.getWidth();
