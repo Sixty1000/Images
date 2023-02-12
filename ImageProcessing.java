@@ -115,6 +115,10 @@ public class ImageProcessing{
 	}
 	
 	//Neha Ashwin
+	/**
+	* @param img APImage that will be rotated right 90º
+	* @return rotated APImage (does not change the original image)
+	*/
 	public static APImage rotate90Right(APImage img) {
 		int width = img.getHeight();
 		int height = img.getWidth();
@@ -130,6 +134,10 @@ public class ImageProcessing{
 	}
 	
 	//Neha Ashwin
+	/**
+	* @param img APImage that will be rotated 180º
+	* @return rotated APImage (does not change the original image
+	*/
 	public static APImage rotate180(APImage img) {
 		int width = img.getWidth();
 		int height = img.getHeight();
