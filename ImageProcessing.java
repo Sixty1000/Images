@@ -454,7 +454,53 @@ public class ImageProcessing{
 		return sketch;
 	}
 }
-
+	/**
+	* takes image creates a old fashioned filtered version of it
+	* @param - img APImage that will be filtered with old fashioned
+	* @return - APImage old fashioned image
+	*/
+	public static void oldFashioned(APImage img) {
+		GrayScale(img);
+		
+		for(int i = 0; i<img.getHeight(); i++) {
+			for(int j = 0; j<img.getWidth(); j++) {
+				Pixel temp = img.getPixel(j,i);
+				int red = temp.getRed();
+				int blue = temp.getBlue();
+				if(red < 63) {
+					img.getPixel(j, i).setRed((int)(red * 1.1));
+					img.getPixel(j, i).setBlue((int)(blue * 0.9));
+				}
+				else if(red < 192) {
+					img.getPixel(j, i).setRed((int)(red * 1.15));
+					img.getPixel(j, i).setBlue((int)(blue * 0.85));
+				}
+				else {
+					img.getPixel(j, i).setRed(Math.min((int)(red * 1.08), 255));
+					img.getPixel(j, i).setBlue((int)(blue * 0.93));
+				}
+			}
+		}
+		
+	}
+	/**
+	* takes image creates a photo negative version of it
+	* @param - img APImage that will be photo negative
+	* @return - APImage photo negtative image
+	*/
+	public static void photoNegative(APImage img) {
+		GrayScale(img);
+		
+		for(int i = 0; i<img.getHeight(); i++) {
+			for(int j = 0; j<img.getWidth(); j++) {
+				Pixel temp = img.getPixel(j,i);
+				temp.setRed(255 - img.getPixel(j,i).getRed());
+				temp.setBlue(255 - img.getPixel(j,i).getBlue());
+				temp.setGreen(255 - img.getPixel(j,i).getGreen());
+				img.setPixel(j, i, temp);
+			}
+		}
+	}
 
 
 
