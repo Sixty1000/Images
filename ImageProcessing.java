@@ -17,6 +17,18 @@ public class ImageProcessing{
 	 * @return new image
 	 */
 	public static void GrayScale(APImage i) {
+		int height = img.getHeight();
+		int width = img.getWidth();
+		APImage sketch = new APImage(width, height);
+		
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				Pixel p = img.getPixel(x, y);
+				Pixel newP = sketch.getPixel(x, y);
+				
+				
+			}
+		}
 		for(Pixel p: i) {
 			int r = p.getRed();
 			int g = p.getGreen();
