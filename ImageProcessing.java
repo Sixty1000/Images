@@ -10,6 +10,7 @@ public class ImageProcessing{
 		APImage image4 = new APImage("smokey.jpg");
 	}
 	
+	//Neil Prashant
 	/*
 	 * Converts image to gray scale
 	 * @param i APImage is original image
@@ -33,6 +34,7 @@ public class ImageProcessing{
 		}
 	}
 	
+	//Neha Ashwin
 	/*
 	 * Converts Image to black and white
 	 * @param i APImage is original image
@@ -59,6 +61,7 @@ public class ImageProcessing{
 		}
 	}
 	
+	//Neil Prashant
 	/*
 	 * Finds edges of image, places it on new canvas and returns new canvas
 	 * @param i APImage is original image
@@ -92,6 +95,7 @@ public class ImageProcessing{
 		return sketch;
 	}
 	
+	//Neha Ashwin
 	/**
 	 * 
 	 * @param img APImage that will be rotated left 90º
@@ -110,6 +114,8 @@ public class ImageProcessing{
 		}
 		return sketch;
 	}
+	
+	//Neha Ashwin
 	public static APImage rotate90Right(APImage img) {
 		int width = img.getHeight();
 		int height = img.getWidth();
@@ -123,6 +129,8 @@ public class ImageProcessing{
 		}
 		return sketch;
 	}
+	
+	//Neha Ashwin
 	public static APImage rotate180(APImage img) {
 		int width = img.getWidth();
 		int height = img.getHeight();
