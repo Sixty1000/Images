@@ -1,9 +1,9 @@
 // darken/brighten, blur, greyscale -- DONE
 	/**
 	 * takes image and creates another image darkened it by a certain factor
-	 * @param img APImage that will be darkened
-	 * @param int factor - the amount each pixel will be darkened by
-	 * @return APImage darkened by factor
+	 * @param - img APImage that will be darkened
+	 * @param - int factor - the amount each pixel will be darkened by
+	 * @return - APImage darkened by factor
 	 */
 	public static void darken(APImage i, int factor){
 	      for(Pixel p : i){
@@ -27,9 +27,9 @@
 		 
 	/**
 	 * takes image and creates another image brightened by a certain factor
-	 * @param img APImage that will be brightened
-	 * @param int factor - the amount each pixel will be brightened by
-	 * @return APImage brightened by factor
+	 * @param - img APImage that will be brightened
+	 * @param - int factor - the amount each pixel will be brightened by
+	 * @return - APImage brightened by factor
 	 */	 
 	public static void brighten(APImage i, int factor){
 	      for(Pixel p : i){
@@ -52,8 +52,8 @@
 	  }
 	/**
 	* takes image creates a luinanced greyscale version of it
-	* @param img APImage that will be luminance greyscaled
-	* @return APImage luminance image
+	* @param - img APImage that will be luminance greyscaled
+	* @return - APImage luminance image
 	*/
 	public static void luminance(APImage i) {
 	for(Pixel p: i) {
@@ -70,8 +70,8 @@
 	}
 	/**
 	* takes image creates a blured version of it
-	* @param img APImage that will be blurred
-	* @return APImage blurred image
+	* @param - img APImage that will be blurred
+	* @return - APImage blurred image
 	*/
 	public static void blur(APImage i) {
 		for(int y = 1; y < i.getHeight()-1; y++) {
