@@ -1,4 +1,10 @@
-public static APImage Enlarge(APImage img, int fact){
+	/**
+	* takes image creates a enlarged version of it
+	* @param - img APImage that will be enlarged
+	* @param - int fact the factor the image will be enlarged by
+	* @return - APImage enlarged image
+	*/
+	public static APImage Enlarge(APImage img, int fact){
 		int width = img.getWidth()*fact;
 		int height = img.getHeight()*fact;
 		APImage sketch = new APImage(width, height);
@@ -25,7 +31,12 @@ public static APImage Enlarge(APImage img, int fact){
 		return sketch;
 	}
 	
-	
+	/**
+	* takes image creates a shrunk version of it
+	* @param - img APImage that will be shrunk
+	* @param - int fact the factor the image will be shrunk by
+	* @return - APImage shrunken image
+	*/
 	public static APImage Shrink(APImage img, int fact){
 		int width = img.getWidth()/fact;
 		int height = img.getHeight()/fact;
@@ -48,7 +59,13 @@ public static APImage Enlarge(APImage img, int fact){
 			
 		return sketch;
 	}
-	
+		/**
+		* takes image creates a sharpened version of it
+		* @param img APImage - that will be sharpened
+		* @param int thresh - the number that each color has to pass to become sharpened (darker)
+		* @param int deg - the number that each color will be darkened if they pass the threshold
+		* @return - APImage enlarged image
+		*/
 		public static APImage Sharpen(APImage i, int thresh, int deg){
 
 			int width = i.getWidth();
