@@ -453,7 +453,6 @@ public class ImageProcessing{
 			}
 		return sketch;
 	}
-}
 	/**
 	* takes image creates a old fashioned filtered version of it
 	* @param - img APImage that will be filtered with old fashioned
@@ -501,6 +500,7 @@ public class ImageProcessing{
 			}
 		}
 	}
+}
 
 
 
