@@ -124,8 +124,8 @@ public class ImageProcessing{
 		int height = i.getWidth();
 		APImage sketch = new APImage(width, height);
 		
-		for(int y = 0; y<height; y++) {
-			for(int x = 0; x<width; x++) {
+		for(int y = 0; y<width; y++) {
+			for(int x = 0; x<height; x++) {
 				//pixel at position [i][j] goes to pixel at position [height-1-j][i]
 				sketch.setPixel(y, height-1-x, i.getPixel(x,y));
 			}
@@ -143,8 +143,8 @@ public class ImageProcessing{
 		int height = i.getWidth();
 		APImage sketch = new APImage(width, height);
 		
-		for(int y = 0; y<height; y++) {
-			for(int x = 0; x<width; x++) {
+		for(int y = 0; y<width; y++) {
+			for(int x = 0; x<height; x++) {
 				//pixel at position [i][j] goes to pixel at position [height-1-j][i]
 				sketch.setPixel(i.getHeight()-1-y, x, i.getPixel(x,y));
 			}
@@ -157,15 +157,15 @@ public class ImageProcessing{
 	* @param img APImage that will be rotated 180º
 	* @return rotated APImage (does not change the original image
 	*/
-	public APImage rotate180(APImage img) {
-		int width = img.getWidth();
-		int height = img.getHeight();
+	public APImage rotate180() {
+		int width = i.getWidth();
+		int height = i.getHeight();
 		APImage sketch = new APImage(width, height);
 		
-		for(int i = 0; i<height; i++) {
-			for(int j = 0; j<width; j++) {
+		for(int y = 0; y<height; y++) {
+			for(int x = 0; x<width; x++) {
 				//pixel at position [i][j] goes to pixel at position [height-1-j][i]
-				sketch.setPixel(width-1-j, height-1-i, img.getPixel(j,i));
+				sketch.setPixel(width-1-x, height-1-y, i.getPixel(x,y));
 			}
 		}
 		return sketch;
