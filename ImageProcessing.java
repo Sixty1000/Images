@@ -346,41 +346,52 @@ public class ImageProcessing{
 		return sketch;
 	}
 	//Numair Chowdhury
-		/**
-		* takes image creates a blurred version of it
-		* @return - APImage blurred image
-		*/
-		public APImage blur() {
+	/**
+	* takes image creates a blurred version of it
+	* @return - APImage blurred image
+	*/
+	public APImage blur() {
 
-	        APImage sketch = i.clone();
-	        int height = i.getHeight();
-	        int width = i.getWidth();
+        APImage sketch = i.clone();
+        int height = i.getHeight();
+        int width = i.getWidth();
+        int[][] colors = new int[3][1];
 
-	        for(int i = 1; i < width-1; i++) {
-	            for (int j = 1; j < height-1; j++) {
+        for(int i = 1; i < width-1; i++) {
+            for (int j = 1; j < height-1; j++) {
 
-	                Pixel p = sketch.getPixel(i, j);
-	                
-	                Pixel left = sketch.getPixel(i - 1, j);
-	                Pixel right = sketch.getPixel(i + 1, j);
-	                Pixel top = sketch.getPixel(i, j - 1);
-	                Pixel bot = sketch.getPixel(i, j + 1);
+                Pixel p = sketch.getPixel(i, j);
+                
+                Pixel left = sketch.getPixel(i - 1, j);
+                Pixel right = sketch.getPixel(i + 1, j);
+                Pixel top = sketch.getPixel(i, j - 1);
+                Pixel bot = sketch.getPixel(i, j + 1);
+                for(int y = 0; y < colors.length; y++) {
+                	for(int x = 0; x < colors[y].length; x++) {
+                		if(y == 0) {
+                			colors[y][x] = left.getRed() + right.getRed() + top.getRed() + bot.getRed();
+                		} else if(y == 1) {
+                			colors[y][x] = left.getGreen() + right.getGreen() + top.getGreen() + bot.getGreen();
+                		} else {
+                			colors[y][x] =left.getBlue() + right.getBlue() + top.getBlue() + bot.getBlue();
+                		}
+                	}
+                }
+                int red = (int) ((colors[0][0])/4);
 
-	                int red = (int) ((left.getRed() + right.getRed() + top.getRed() + bot.getRed())/4);
+                int green = (int) ((colors[1][0])/4);
 
-	                int green = (int) ((left.getGreen() + right.getGreen() + top.getGreen() + bot.getGreen())/4);
+                int blue = (int) ((colors[2][0])/4);
 
-	                int blue = (int) ((left.getBlue() + right.getBlue() + top.getBlue() + bot.getBlue())/4);
+                p.setRed(red);
+                p.setBlue(blue);
+                p.setGreen(green);
+                sketch.setPixel(i, j, p);
+            }
+        }
 
-	                p.setRed(red);
-	                p.setBlue(blue);
-	                p.setGreen(green);
-	                sketch.setPixel(i, j, p);
-	            }
-	        }
-
-	        return sketch;
-	    }
+        return sketch;
+    }
 	
 	//Aneel
 	public APImage Enlarge(int fact){
