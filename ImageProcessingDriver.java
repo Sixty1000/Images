@@ -44,6 +44,10 @@ public class ImageProcessingDriver {
 				newImg = convert.rotate90Right();
 				img.draw();
 				newImg.draw();
+			}else if(input.equals("6")) {
+				newImg = convert.rotate180();
+				img.draw();
+				newImg.draw();
 			}else if(input.equals("7")) {
 				newImg = convert.Posterizing();
 				img.draw();
