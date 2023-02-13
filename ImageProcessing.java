@@ -14,7 +14,7 @@ public class ImageProcessing{
 	 * @param i APImage is original image
 	 * @return new image
 	 */
-	public APImage GrayScale() {
+	public APImage grayScale() {
 		int height = i.getHeight();
 		int width = i.getWidth();
 		APImage sketch = new APImage(width, height);
@@ -50,7 +50,7 @@ public class ImageProcessing{
 	 * @param i APImage is original image
 	 * @return new image
 	 */
-	public APImage BlackWhite() {
+	public APImage blackWhite() {
 		int height = i.getHeight();
 		int width = i.getWidth();
 		APImage sketch = new APImage(width, height);
@@ -87,7 +87,7 @@ public class ImageProcessing{
 	 * @param thresh int is minimum threshold difference between pixels to be considered edge
 	 * @return new image
 	 */
-	public APImage EdgeDetection(int thresh) {
+	public APImage edgeDetection(int thresh) {
 		int width = i.getWidth();
 		int height = i.getHeight();
 		APImage sketch = new APImage(width, height);
@@ -176,7 +176,7 @@ public class ImageProcessing{
 	 * Converts image into posterized version
 	 * @param i - original image
 	 */
-	public APImage Posterizing() {
+	public APImage posterizing() {
 		int colOneRed = (int)(Math.random() * 256);
 		int colOneGreen = (int)(Math.random() * 256);
 		int colOneBlue = (int)(Math.random() * 256);
@@ -221,7 +221,7 @@ public class ImageProcessing{
 	 * @param g - amount of green to remove/add
 	 * @param b - amount of blue to remove/add
 	 */
-	public APImage ColorFiltering(int r, int g, int b) {
+	public APImage colorFiltering(int r, int g, int b) {
 		int height = i.getHeight();
 		int width = i.getWidth();
 		APImage sketch = new APImage(width, height);
@@ -394,7 +394,7 @@ public class ImageProcessing{
     }
 	
 	//Aneel
-	public APImage Enlarge(int fact){
+	public APImage enlarge(int fact){
 		int width = i.getWidth()*fact;
 		int height = i.getHeight()*fact;
 		APImage sketch = new APImage(width, height);
@@ -422,7 +422,7 @@ public class ImageProcessing{
 	}
 		
 	//Aneel
-	public APImage Shrink(int fact){
+	public APImage shrink(int fact){
 		int width = i.getWidth()/fact;
 		int height = i.getHeight()/fact;
 		APImage sketch = new APImage(width, height);
@@ -447,7 +447,7 @@ public class ImageProcessing{
 	
 	
 	//Aneel
-	public APImage Sharpen(int thresh, int deg){
+	public APImage sharpen(int thresh, int deg){
 
 		int width = i.getWidth();
 		int height = i.getHeight();
@@ -498,7 +498,7 @@ public class ImageProcessing{
 	* @return - APImage old fashioned image
 	*/
 	public APImage oldFashioned() {
-		APImage grayImg = GrayScale();
+		APImage grayImg = grayScale();
 		
 		for(int i = 0; i< grayImg.getHeight(); i++) {
 			for(int j = 0; j< grayImg.getWidth(); j++) {
@@ -529,7 +529,7 @@ public class ImageProcessing{
 	* @return - APImage photo negtative image
 	*/
 	public APImage photoNegative() {
-		APImage grayImg = GrayScale();
+		APImage grayImg = grayScale();
 		
 		for(int i = 0; i<grayImg.getHeight(); i++) {
 			for(int j = 0; j<grayImg.getWidth(); j++) {
