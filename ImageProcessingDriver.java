@@ -23,17 +23,17 @@ public class ImageProcessingDriver {
 			APImage newImg;
 			
 			if(input.equals("1")) {
-				newImg = convert.GrayScale();
+				newImg = convert.grayScale();
 				img.draw();
 				newImg.draw();
 			}else if(input.equals("2")) {
-				newImg = convert.BlackWhite();
+				newImg = convert.blackWhite();
 				img.draw();
 				newImg.draw();
 			}else if(input.equals("3")) {
 				System.out.println("Please select a threshold value of type int");
 				int threshold = in.nextInt();
-				newImg = convert.EdgeDetection(threshold);
+				newImg = convert.edgeDetection(threshold);
 				img.draw();
 				newImg.draw();
 			}else if(input.equals("4")) {
@@ -49,7 +49,7 @@ public class ImageProcessingDriver {
 				img.draw();
 				newImg.draw();
 			}else if(input.equals("7")) {
-				newImg = convert.Posterizing();
+				newImg = convert.posterizing();
 				img.draw();
 				newImg.draw();
 			}else if(input.equals("8")) {
@@ -60,7 +60,7 @@ public class ImageProcessingDriver {
 				System.out.println("Please select amount of color blue to filter");
 				int b = in.nextInt();
 						
-				newImg = convert.ColorFiltering(r,g,b);
+				newImg = convert.colorFiltering(r,g,b);
 				img.draw();
 				newImg.draw();
 			}else if(input.equals("9")) {
@@ -86,13 +86,13 @@ public class ImageProcessingDriver {
 			} else if(input.equals("13")) {
 				System.out.println("Please select factor to enlarge image by");
 				int fact = in.nextInt();
-				newImg = convert.Enlarge(fact);
+				newImg = convert.enlarge(fact);
 				img.draw();
 				newImg.draw();
 			} else if(input.equals("14")) {
 				System.out.println("Please select factor to shrink image by");
 				int fact = in.nextInt();
-				newImg = convert.Shrink(fact);
+				newImg = convert.shrink(fact);
 				img.draw();
 				newImg.draw();
 			} else if(input.equals("15")) {
@@ -100,7 +100,7 @@ public class ImageProcessingDriver {
 				int threshold = in.nextInt();
 				System.out.println("Please select a degre, of type int, to sharpen image");
 				int deg = in.nextInt();
-				newImg = convert.Sharpen(threshold, deg);
+				newImg = convert.sharpen(threshold, deg);
 				img.draw();
 				newImg.draw();
 			} else if(input.equals("16")) {
