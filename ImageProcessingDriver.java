@@ -16,7 +16,7 @@ public class ImageProcessingDriver {
 		}else if(input.equals("Q")) {
 			i = new NewImage();
 		} else {
-			System.out.println("Incorrect input");
+			System.out.println("Incorrect input. Default image provided.");
 			i = new NewImage();
 		}
 			
