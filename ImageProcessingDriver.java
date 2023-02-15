@@ -5,10 +5,21 @@ public class ImageProcessingDriver {
 	public static void main(String[] args){
 		Scanner in = new Scanner(System.in);
 		String input = "";
+		NewImage i;
 		
-		
-		NewImage i = new NewImage();
-		
+		System.out.println("Do you want to input an image (Press \'X\')? Else, press \'Q\'");
+		input = in.next();
+		if(input.equals("X")) {
+			System.out.println("Please type in the jpg file in the console");
+			input = in.next();
+			i = new NewImage(input);
+		}else if(input.equals("Q")) {
+			i = new NewImage();
+		} else {
+			System.out.println("Incorrect input");
+			i = new NewImage();
+		}
+			
 		APImage img = i.getImg();
 		
 		ImageProcessing convert = new ImageProcessing(img);
